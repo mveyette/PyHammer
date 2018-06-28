@@ -5,7 +5,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/BU-hammerTeam/PyHammer.svg)](https://github.com/BU-hammerTeam/PyHammer/issues)
 [![license](https://img.shields.io/github/license/BU-hammerTeam/PyHammer.svg)](https://github.com/BU-hammerTeam/PyHammer/blob/master/license.txt)
 [![Python Supported](https://img.shields.io/badge/Python%20Supported-3-brightgreen.svg)](conda)
-[![Maintenance](https://img.shields.io/maintenance/yes/2017.svg)]()
+[![Maintenance](https://img.shields.io/maintenance/yes/2018.svg)]()
 
 ### A Python Spectral Typing Suite 
 
