@@ -13,7 +13,12 @@ def read_all_spectra(path, quick=True):
         ## Read in pickles
         labels, spectra = [], []
         files = glob(os.path.join(os.path.dirname(__file__),'all_spectra_pickles','*.pkl'))
-        for file in files:
+        ###################################################################
+        ##
+        ## using a smaller set for development, eventually remove the indexing
+        ##
+        ###################################################################
+        for file in files[:200]:
             with open(file, 'rb') as pklfile:
                 l, s = pickle.load(pklfile)
             labels.append(l)

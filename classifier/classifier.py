@@ -7,24 +7,14 @@ class Classifier():
         """Initialization"""
         raise RuntimeError('Can\'t initialize base class. Used an extended class')
         
-    def train(self, features,labels):
+    def train(self):
         """Train the model"""
         raise RuntimeError('No training method defined.')
     
-    def predict(self,features):
-        """Predict labels given a set fo features"""
+    def predict(self):
+        """Predict labels given a set of features"""
         raise RuntimeError('No predicition method defined.')
         
-    def test(self,features,labels):
-        """
-        Test the model
-        
-        inputs:
-            features - NxM array of features were N is the number of 
-                       test cases and M is the number of features
-            labels - NxM array of labels
-        
-        """
-        guesses = self.predict(features)
-        correct = [l == g for l,g in zip(labels,guesses)]
-        print(np.sum(correct)/len(labels))
+    def test(self):
+        """Test predicitions"""
+        raise RuntimeError('No testing method defined.')
