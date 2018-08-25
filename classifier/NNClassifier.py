@@ -37,8 +37,8 @@ class NNClassifier(Classifier):
         ## Get number of labels
         nlabels = len(labels)
         ## Define estimator
-        self.estimator = self.__create_estimator(hidden_units, feature_columns,
-                                                 nlabels, model_dir, **kwargs)
+        self.estimator = self.__create_estimator(hidden_units, feature_columns, nlabels,
+                                                 model_dir, **kwargs)
                                                     
     def __create_estimator(self, hidden_units, feature_columns, nlabels, model_dir, **kwargs):
         """Function to create the estimator. Can be overridden by extended classes"""
@@ -77,26 +77,27 @@ class NNClassifier(Classifier):
         features = {'flux': self.spectra_test}
         return features
         
-    def train(self, spectra, labels, steps=1e4, batch_size=128):
+    def train(self, spectra, labels, steps=1e4, batch_size=128, **kwargs):
         """Function to start the training routine"""
         self.batch_size = batch_size
         self.spectra_train = np.array(spectra)
         self.labels_train  = np.array(labels)
-        self.estimator.train(input_fn=self.__train_input_fn, steps=steps)
+        self.estimator.train(input_fn=self.__train_input_fn, steps=steps, **kwargs)
         
-    def evaluate(self, spectra, labels):
+    def evaluate(self, spectra, labels, **kwargs):
         """Evaluate the model"""
         self.spectra_test = np.array(spectra)
         self.labels_test  = np.array(labels)
-        eval_result = self.estimator.evaluate(input_fn=self.__test_input_fn, steps=1)
+        eval_result = self.estimator.evaluate(input_fn=self.__test_input_fn, steps=1, **kwargs)
         return eval_result
         
-    def predict(self, spectra, preprocess=True, postprocess=True):
+    def predict(self, spectra, preprocess=True, postprocess=True, **kwargs):
+        """Make Predictions"""
         if preprocess:
             ## Do preprocessing here
             pass
         self.spectra_test = np.array(spectra)
-        predictions = self.estimator.predict(input_fn=self.__predict_input_fn)
+        predictions = self.estimator.predict(input_fn=self.__predict_input_fn, **kwargs)
         if postprocess:
             ## Do post processing here
             pass

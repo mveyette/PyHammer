@@ -18,11 +18,12 @@ def read_all_spectra(path, quick=True):
         ## using a smaller set for development, eventually remove the indexing
         ##
         ###################################################################
-        for file in files[:200]:
+        for file in files:
             with open(file, 'rb') as pklfile:
                 l, s = pickle.load(pklfile)
-            labels.append(l)
-            spectra.append(s)
+            if l[0] == 'M' and int(l[1]) <= 8:
+                labels.append(l)
+                spectra.append(s)
     
     else:
         ## Grab files, ignore giants
